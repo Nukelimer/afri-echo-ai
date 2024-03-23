@@ -6,7 +6,7 @@ import Animate from "./Animate";
 function Hero() {
   return (
     <div>
-      <div className="h-screen flex justify-center items-center flex-col border-red-600 border-4">
+      <div className="h-screen flex justify-center items-center flex-col ">
         <div className=" bg-slate-100 -z-10 ">
           <Image
             src="/images/bg.jpg"
