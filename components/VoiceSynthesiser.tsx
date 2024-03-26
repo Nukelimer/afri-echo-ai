@@ -28,7 +28,7 @@ function VoiceSynthesiser({
       setSynth(window.speechSynthesis)
     
    
-    }, [window])
+    }, [])
     
     useEffect(() => {
 if (!state.response || !synth) {
@@ -72,7 +72,7 @@ if (!state.response || !synth) {
       {displaySettings && (
         <>
           <div>
-            <select
+            <select defaultValue={''}
               className="flex-1 dark:bg-slate-600 bg-slate-300 text-slate-600 dark:text-white  p-3"
               value={voice?.name}
               onChange={voiceChangeHandler}>
