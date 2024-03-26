@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+  .mic {
+    @apply h-40 w-40 object-contain
+  }
+}
 
 @layer base {
   :root {
