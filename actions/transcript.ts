@@ -80,8 +80,6 @@ async function transcript(prevState: any, formData: FormData) {
   
     console.log(prevState.sender, '-----', result.text);
     
-
-
     return {
         sender: result.text,
         response:response,
