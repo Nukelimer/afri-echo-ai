@@ -67,7 +67,7 @@ async function transcript(prevState: any, formData: FormData) {
 
 
     ]
-    const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 280})
+    const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 2000})
   const response = completions?.choices[0].message?.content;
   
   console.log(response);
