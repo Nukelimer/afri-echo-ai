@@ -1,7 +1,6 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
-
 
 // Replace Interfavce with TYPES!!!!
 type State = {
@@ -23,36 +22,27 @@ function VoiceSynthesiser({
   const [volume, setVolume] = useState(1);
   const [synth, setSynth] = useState<SpeechSynthesis | null>(null);
 
-    
-    useEffect(() => {
-      setSynth(window.speechSynthesis)
-    
-   
-    }, [])
-    
-    useEffect(() => {
-if (!state?.response || !synth) {
-    return
-        }
-        
-      const utteredSpeech = new SpeechSynthesisUtterance(state?.response);
-      
-  console.log(utteredSpeech, 'voice synth  use effect');
+  useEffect(() => {
+    setSynth(window.speechSynthesis);
+  }, []);
 
-        utteredSpeech.voice = voice;
-        utteredSpeech.pitch = pitch;
-        utteredSpeech.rate = rate;
-        utteredSpeech.volume = volume
+  useEffect(() => {
+    if (!state?.response || !synth) return;
 
+    const utteredSpeech = new SpeechSynthesisUtterance(state?.response);
 
-        synth.speak(utteredSpeech)
-      return () => {
-          // synth.cancel()
-          // synth.pause()
-      }
-    }, [state])
-    
-    
+    utteredSpeech.voice = voice;
+    utteredSpeech.pitch = pitch;
+    utteredSpeech.rate = rate;
+    utteredSpeech.volume = volume;
+
+    synth.speak(utteredSpeech);
+    return () => {
+      synth.cancel()
+      synth.pause()
+    };
+  }, [state, state?.response]);
+
   const pitchChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPitch(parseFloat(e.target.value));
   };
@@ -75,7 +65,8 @@ if (!state?.response || !synth) {
       {displaySettings && (
         <>
           <div>
-            <select defaultValue={'......'}
+            <select
+             
               className="flex-1 dark:bg-slate-600 bg-slate-300 text-slate-600 dark:text-white  p-3"
               value={voice?.name}
               onChange={voiceChangeHandler}>
