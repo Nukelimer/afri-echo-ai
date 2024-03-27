@@ -47,7 +47,7 @@ function VoiceSynthesiser({
   useEffect(() => {
     const voices = window.speechSynthesis.getVoices();
     setVoice(voices[0]);
-  }, [window]);
+  }, [state]);
 
   const pitchChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPitch(parseFloat(e.target.value));
