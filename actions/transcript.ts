@@ -9,6 +9,12 @@ import {
 import toast from "react-hot-toast";
 
 async function transcript(prevState: any, formData: FormData) {
+  
+  try {
+    
+
+  
+  
   console.log(`PREVIOUS STATE: ${prevState} ${formData}`);
 
   if (
@@ -67,7 +73,7 @@ async function transcript(prevState: any, formData: FormData) {
 
 
     ]
-    const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 300})
+    const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 280})
   const response = completions?.choices[0].message?.content;
   
   console.log(response);
@@ -81,6 +87,14 @@ async function transcript(prevState: any, formData: FormData) {
         response:response,
         id: crypto.randomUUID()
     }
+  } catch (error) {
+    console.log(error);
+    
+    return {
+      sender: '',
+      response: error
+    }
+  }
 }
 
 export default transcript;
