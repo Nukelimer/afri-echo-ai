@@ -9,17 +9,20 @@ import { useFormState } from "react-dom";
 import transcript from "@/actions/transcript";
 import VoiceSynthesiser from "@/components/VoiceSynthesiser";
 
-const initialState = {
-  sender: "",
-  response: "",
-  id: "",
-};
+
 
 export type Message = {
   sender: string;
   response: string;
   id: string;
 };
+
+const initialState: Message = {
+  sender: "",
+  response: "",
+  id: "",
+};
+
 
 function AfriEchoAI() {
   const fileRef = useRef<HTMLInputElement | null>(null);
