@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { clearTimeout } from "timers";
 
 // Replace Interfavce with TYPES!!!!
 type State = {
@@ -15,7 +16,7 @@ function VoiceSynthesiser({
   state: State;
   displaySettings: boolean;
 }) {
-  const [voice, setVoice] = useState<SpeechSynthesisVoice | null >(null);
+  const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
 
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
@@ -37,8 +38,23 @@ function VoiceSynthesiser({
     utteredSpeech.volume = volume;
 
     synth.speak(utteredSpeech);
+
+
+    let r = setTimeout(() => {
+    
+      
+      if (synth.speaking) {
+        synth.pause();
+        synth.cancel();
+      } else {
+        synth.resume();
+      }
+    }, 100000);
+
     return () => {
-      synth.cancel();
+      clearTimeout(r);
+     
+
     };
   }, [state]);
 
