@@ -74,6 +74,7 @@ function VoiceSynthesiser({
       return;
     }
     setVoice(voice);
+    
   };
 
   return (
