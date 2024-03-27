@@ -25,7 +25,7 @@ function VoiceSynthesiser({
 
   useEffect(() => {
     setSynth(window.speechSynthesis);
-  }, [window]);
+  }, []);
 
   useEffect(() => {
     if (!state.response || !synth) return;
@@ -74,7 +74,7 @@ function VoiceSynthesiser({
       return;
     }
     setVoice(voice);
-    
+
   };
 
   return (
