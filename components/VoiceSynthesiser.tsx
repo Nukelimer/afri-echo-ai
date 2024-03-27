@@ -47,8 +47,8 @@ if (!state.response || !synth) {
 
         synth.speak(utteredSpeech)
       return () => {
-          synth.cancel()
-          synth.pause()
+          // synth.cancel()
+          // synth.pause()
       }
     }, [state])
     
