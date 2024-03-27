@@ -62,7 +62,7 @@ function VoiceSynthesiser({
   };
   return (
     <div className="flex flex-col items-center dark:bg-slate-700 bg-slate-400 text-white p-2 z-20">
-      {displaySettings && (
+      {/* {displaySettings && (
         <>
           <div>
             <select
@@ -119,7 +119,7 @@ function VoiceSynthesiser({
             </div>
           </div>
         </>
-      )}
+      )} */}
     </div>
   );
 }
