@@ -31,7 +31,7 @@ function VoiceSynthesiser({
     }, [])
     
     useEffect(() => {
-if (!state.response || !synth) {
+if (!state?.response || !synth) {
     return
         }
         

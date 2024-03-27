@@ -9,7 +9,7 @@ import {
 import toast from "react-hot-toast";
 
 async function transcript(prevState: any, formData: FormData) {
-  console.log(`PREVIOUS STATE: ${prevState}`);
+  console.log(`PREVIOUS STATE: ${prevState} ${formData}`);
 
   if (
     process.env.AZURE_API_KEY === undefined ||
@@ -20,7 +20,7 @@ async function transcript(prevState: any, formData: FormData) {
     toast.error("Azure API setup needs attention, for this app to work.");
     
     return {
-      sender: "",
+   sender: "" ,
       response: "Azure API setup not set, it needs urgent attention.",
     };
   }
@@ -68,7 +68,7 @@ async function transcript(prevState: any, formData: FormData) {
 
     ]
     const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 280})
-  const response = completions.choices[0].message?.content;
+  const response = completions?.choices[0].message?.content;
   
   console.log(response);
   
