@@ -24,12 +24,12 @@ function VoiceSynthesiser({
 
   useEffect(() => {
     setSynth(window.speechSynthesis);
-  }, []);
+  }, [window]);
 
   useEffect(() => {
-    if (!state?.response || !synth) return;
+    if (!state.response || !synth) return;
 
-    const utteredSpeech = new SpeechSynthesisUtterance(state?.response);
+    const utteredSpeech = new SpeechSynthesisUtterance(state.response);
 
     utteredSpeech.voice = voice;
     utteredSpeech.pitch = pitch;
@@ -39,9 +39,8 @@ function VoiceSynthesiser({
     synth.speak(utteredSpeech);
     return () => {
       synth.cancel();
-      synth.pause();
     };
-  }, [state, state?.response]);
+  }, [state]);
 
   const pitchChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPitch(parseFloat(e.target.value));
@@ -62,7 +61,7 @@ function VoiceSynthesiser({
   };
   return (
     <div className="flex flex-col items-center dark:bg-slate-700 bg-slate-400 text-white p-2 z-20">
-      {/* {displaySettings && (
+      {displaySettings && (
         <>
           <div>
             <select
@@ -83,10 +82,10 @@ function VoiceSynthesiser({
               <p>Pitch:</p>
               <input
                 type="range"
-                max={2}
-                min={0.5}
-                value={pitch}
-                step={0.1}
+                max="2"
+                min="0.5"
+                value="pitch"
+                step="0.1"
                 onChange={pitchChangeHandler}
                 className=" accent-slate-300 dark:accent-slate-500"
               />
@@ -96,10 +95,10 @@ function VoiceSynthesiser({
               <p>Volume:</p>
               <input
                 type="range"
-                max={1}
-                min={0}
-                value={volume}
-                step={0.1}
+                max='1'
+                min='0'
+                value='volume'
+                step='0.1'
                 onChange={volumeChangeHandler}
                 className=" accent-slate-300 dark:accent-slate-500"
               />
@@ -109,17 +108,17 @@ function VoiceSynthesiser({
               <p>Speed:</p>
               <input
                 type="range"
-                max={2}
-                min={0.5}
-                value={rate}
-                step={0.1}
+                max='2'
+                min='0.5'
+                value='rate'
+                step='0.1'
                 onChange={rateChangeHandler}
                 className=" accent-slate-300 dark:accent-slate-500"
               />
             </div>
           </div>
         </>
-      )} */}
+      )}
     </div>
   );
 }
