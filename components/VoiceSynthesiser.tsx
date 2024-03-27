@@ -35,7 +35,7 @@ if (!state.response || !synth) {
     return
         }
         
-      const utteredSpeech = new SpeechSynthesisUtterance(state.response);
+      const utteredSpeech = new SpeechSynthesisUtterance(state?.response);
       
   console.log(utteredSpeech, 'voice synth  use effect');
 

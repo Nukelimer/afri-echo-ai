@@ -38,7 +38,7 @@ function AfriEchoAI() {
           {
             sender: state.sender || "",
             id: state.id || "",
-            response: state.response || "",
+            response: state?.response || "",
           },
         ];
       });

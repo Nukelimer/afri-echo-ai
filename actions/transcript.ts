@@ -78,7 +78,7 @@ async function transcript(prevState: any, formData: FormData) {
 
     return {
         sender: result.text,
-        response,
+        response:response,
         id: crypto.randomUUID()
     }
 }
