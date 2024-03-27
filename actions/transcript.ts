@@ -18,7 +18,7 @@ async function transcript(prevState: any, formData: FormData) {
     process.env.AZURE_API_KEY === undefined
   ) {
     toast.error("Azure API setup needs attention, for this app to work.");
-
+    
     return {
       sender: "",
       response: "Azure API setup not set, it needs urgent attention.",
@@ -67,8 +67,11 @@ async function transcript(prevState: any, formData: FormData) {
 
 
     ]
-    const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 2000})
-    const response = completions.choices[0].message?.content;
+    const completions =  await client.getChatCompletions(process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME, messages, {maxTokens: 280})
+  const response = completions.choices[0].message?.content;
+  
+  console.log(response);
+  
     console.log(prevState.sender, '-----', result.text);
     
 

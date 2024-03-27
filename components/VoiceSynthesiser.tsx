@@ -35,7 +35,10 @@ if (!state.response || !synth) {
     return
         }
         
-        const utteredSpeech = new SpeechSynthesisUtterance(state.response);
+      const utteredSpeech = new SpeechSynthesisUtterance(state.response);
+      
+  console.log(utteredSpeech, 'voice synth  use effect');
+
         utteredSpeech.voice = voice;
         utteredSpeech.pitch = pitch;
         utteredSpeech.rate = rate;
@@ -72,7 +75,7 @@ if (!state.response || !synth) {
       {displaySettings && (
         <>
           <div>
-            <select defaultValue={''}
+            <select defaultValue={'......'}
               className="flex-1 dark:bg-slate-600 bg-slate-300 text-slate-600 dark:text-white  p-3"
               value={voice?.name}
               onChange={voiceChangeHandler}>
