@@ -38,8 +38,8 @@ function VoiceSynthesiser({
 
     synth.speak(utteredSpeech);
     return () => {
-      synth.cancel()
-      synth.pause()
+      synth.cancel();
+      synth.pause();
     };
   }, [state, state?.response]);
 
@@ -66,13 +66,9 @@ function VoiceSynthesiser({
         <>
           <div>
             <select
-             
               className="flex-1 dark:bg-slate-600 bg-slate-300 text-slate-600 dark:text-white  p-3"
               value={voice?.name}
               onChange={voiceChangeHandler}>
-              <option value="" disabled selected hidden>
-                Select a voice type.
-              </option>
               {window.speechSynthesis.getVoices().map((voice) => {
                 return (
                   <option key={crypto.randomUUID()} value={voice.name}>
