@@ -70,6 +70,7 @@ function AfriEchoAI() {
               ? "/images/avatar-talking.png"
               : "/images/avatar-not-talking.png"
           }
+          priority
           alt="avatar"
           width={40}
           height={40}

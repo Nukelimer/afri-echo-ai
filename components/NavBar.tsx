@@ -19,6 +19,7 @@ function NavBar() {
                 alt="logo"
                 width={95}
                 height={65}
+                priority
                 style={{  height: "auto" }}></Image>
             </div>
             <div className="">

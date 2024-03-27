@@ -32,6 +32,7 @@ function Messages({ messages }: Props) {
             <div className="" key={id}>
               <div className="flex items-center justify-start flex-row-reverse text-balance  p-4 mt-4 gap-2  mb-4 bg-slate-400 rounded-2xl rounded-br-none">
                 <Image
+                  priority
                   height={40}
                   width={30}
                   src={"/images/avatar-not-talking.png"}

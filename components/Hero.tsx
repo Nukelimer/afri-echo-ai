@@ -14,6 +14,7 @@ function Hero() {
             objectFit="cover"
             quality={100}
             alt="bg image"
+            priority
             className="to-blue-900 blur-md"
           />
         </div>

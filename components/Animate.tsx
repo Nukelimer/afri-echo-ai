@@ -22,6 +22,7 @@ function Animate() {
       variants={variants}
       onAnimationComplete={animationCompleteHandler}>
       <Image
+        priority
         src={"/images/hero.png"}
         quality={100}
         height={200}

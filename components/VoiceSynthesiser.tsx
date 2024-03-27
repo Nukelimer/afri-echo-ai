@@ -15,7 +15,7 @@ function VoiceSynthesiser({
   state: State;
   displaySettings: boolean;
 }) {
-  const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const [voice, setVoice] = useState<SpeechSynthesisVoice | null >(null);
 
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
@@ -59,24 +59,25 @@ function VoiceSynthesiser({
     }
     setVoice(voice);
   };
+
   return (
     <div className="flex flex-col items-center dark:bg-slate-700 bg-slate-400 text-white p-2 z-20">
       {displaySettings && (
         <>
-          <div>
+          <div className="w-fit">
+            <p className="text-xs text-gray-500 p-2">Voice:</p>
             <select
-              className="flex-1 dark:bg-slate-600 bg-slate-300 text-slate-600 dark:text-white  p-3"
               value={voice?.name}
-              onChange={voiceChangeHandler}>
-              {window.speechSynthesis.getVoices().map((voice) => {
-                return (
-                  <option key={crypto.randomUUID()} value={voice.name}>
-                    {voice.name}
-                  </option>
-                );
-              })}
+              onChange={voiceChangeHandler}
+              className="flex-1 dark:bg-slate-600 bg-slate-300 text-slate-600 dark:text-white  p-3">
+              {window.speechSynthesis.getVoices().map((voice) => (
+                <option key={voice.name} value={voice.name}>
+                  {voice.name}
+                </option>
+              ))}
             </select>
           </div>
+
           <div className="p-5  flex gap-3">
             <div className="">
               <p>Pitch:</p>
@@ -95,10 +96,10 @@ function VoiceSynthesiser({
               <p>Volume:</p>
               <input
                 type="range"
-                max='1'
-                min='0'
-                value='volume'
-                step='0.1'
+                max="1"
+                min="0"
+                value="volume"
+                step="0.1"
                 onChange={volumeChangeHandler}
                 className=" accent-slate-300 dark:accent-slate-500"
               />
@@ -108,10 +109,10 @@ function VoiceSynthesiser({
               <p>Speed:</p>
               <input
                 type="range"
-                max='2'
-                min='0.5'
-                value='rate'
-                step='0.1'
+                max="2"
+                min="0.5"
+                value="rate"
+                step="0.1"
                 onChange={rateChangeHandler}
                 className=" accent-slate-300 dark:accent-slate-500"
               />
