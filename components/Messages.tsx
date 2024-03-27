@@ -7,7 +7,7 @@ interface Props {
   messages: Message[];
 }
 function Messages({ messages }: Props) {
-  console.log(messages.length);
+  
 
   return (
     <div
@@ -26,6 +26,8 @@ function Messages({ messages }: Props) {
 
       <div className="p-6">
         {messages.map(({ id, response, sender }) => {
+
+         const text = response.lastIndexOf('.')
           return (
             <div className="" key={id}>
               <div className="flex items-center justify-start flex-row-reverse text-balance  p-4 mt-4 gap-2  mb-4 bg-slate-400 rounded-2xl rounded-br-none">
@@ -43,7 +45,7 @@ function Messages({ messages }: Props) {
 
               <div className="flex flex-row-reverse items-center justify-start   ">
                 <p className="text-balance text- p-4 bg-slate-300 dark:bg-slate-700  rounded-3xl rounded-bl-none w-fit">
-                  {response}
+                  {text === -1 ? response : response.slice(0, text + 1)}
                 </p>
               </div>
             </div>
