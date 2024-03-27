@@ -25,38 +25,29 @@ function VoiceSynthesiser({
 
   useEffect(() => {
     setSynth(window.speechSynthesis);
-  }, []);
+  }, [window]);
 
   useEffect(() => {
     if (!state.response || !synth) return;
 
-    const utteredSpeech = new SpeechSynthesisUtterance(state.response);
+    const wordsToSay = new SpeechSynthesisUtterance(state.response);
 
-    utteredSpeech.voice = voice;
-    utteredSpeech.pitch = pitch;
-    utteredSpeech.rate = rate;
-    utteredSpeech.volume = volume;
+    wordsToSay.voice = voice;
+    wordsToSay.pitch = pitch;
+    wordsToSay.rate = rate;
+    wordsToSay.volume = volume;
 
-    synth.speak(utteredSpeech);
-
-
-    let r = setTimeout(() => {
-    
-      
-      if (synth.speaking) {
-        synth.pause();
-        synth.cancel();
-      } else {
-        synth.resume();
-      }
-    }, 100000);
+    synth.speak(wordsToSay);
 
     return () => {
-      clearTimeout(r);
-     
-
+      synth.cancel();
     };
   }, [state]);
+
+  useEffect(() => {
+    const voices = window.speechSynthesis.getVoices();
+    setVoice(voices[0]);
+  }, [window]);
 
   const pitchChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPitch(parseFloat(e.target.value));
@@ -74,7 +65,6 @@ function VoiceSynthesiser({
       return;
     }
     setVoice(voice);
-
   };
 
   return (
